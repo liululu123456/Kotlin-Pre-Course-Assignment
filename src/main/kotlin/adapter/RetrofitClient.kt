@@ -1,7 +1,6 @@
 package adapter
 
 import com.google.gson.GsonBuilder
-import org.example.Controller.ProductController
 import model.Inventory
 import model.Product
 import retrofit2.Retrofit

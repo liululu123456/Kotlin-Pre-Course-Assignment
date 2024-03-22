@@ -1,4 +1,4 @@
-package org.example.Controller
+package adapter
 
 import model.Inventory
 import model.Product
