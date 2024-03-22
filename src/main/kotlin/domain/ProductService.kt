@@ -9,13 +9,13 @@ class ProductService {
     private val products = retrofitClient.getProducts()
     private val inventories = retrofitClient.getInventories()
 
-    private fun calculatePrice(type: String, quantity: Int): Double {
+    private fun calculatePrice(type: String, quantity: Int, price: Double): Double {
         return when (type) {
-            "NORMAL" -> quantity.toDouble()
+            "NORMAL" -> price
             "HIGH_DEMAND" -> when {
-                quantity > 100 -> quantity.toDouble()
-                quantity in 31..100 -> quantity * 1.2
-                else -> quantity * 1.5
+                quantity > 100 -> price
+                quantity in 31..100 -> price * 1.2
+                else -> price * 1.5
             }
             else -> 0.0
         }
@@ -29,7 +29,7 @@ class ProductService {
                 if (inventories !=null) {
                     totalQuantity = inventories.filter { it.SKU == product.SKU }.sumOf { it.quantity }
                 }
-                val price = calculatePrice(product.type, totalQuantity)
+                val price = calculatePrice(product.type, totalQuantity,product.price)
                 val detail= ProductDetail(product.SKU,product.name,price,totalQuantity,product.image)
                 productDetail.add(detail)
             }
