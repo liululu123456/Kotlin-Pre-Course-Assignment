@@ -1,5 +1,8 @@
 package org.example
 
+import org.example.domain.ProductService
+
 fun main() {
-    println("Hello World!")
+    val productService= ProductService()
+    productService.showAllDetail()
 }
