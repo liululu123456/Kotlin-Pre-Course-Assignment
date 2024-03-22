@@ -29,8 +29,8 @@ class ProductService {
                 if (inventories !=null) {
                     totalQuantity = inventories.filter { it.SKU == product.SKU }.sumOf { it.quantity }
                 }
-                val price = calculatePrice(product.type, totalQuantity,product.price)
-                val detail= ProductDetail(product.SKU,product.name,price,totalQuantity,product.image)
+                val price = calculatePrice(product.type, totalQuantity, product.price)
+                val detail= ProductDetail(product.SKU, product.name, price, totalQuantity, product.image)
                 productDetail.add(detail)
             }
         }
